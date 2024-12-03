@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zespół Eder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/style.css') }}">
+    <script src="{{ url_for('static', filename='resources/js/scripts.js') }}" defer></script>
+</head>
+<body>
+    <!-- Mock1 -->
+    <section class="mock mock1">
+        <div class="left">
+            <img src="{{ url_for('static', filename='resources/album-cover.jpg') }}" alt="Album Cover" class="album-cover">
+        </div>
+        <div class="right">
+            <h1 class="album-title">Nazwa Płyty</h1>
+            <p class="album-description">
+                To jest krótki opis płyty. Dowiedz się, co zainspirowało artystów i co czeka Cię podczas odsłuchu.
+            </p>
+            <button class="buy-button">Kup płytę</button>
+            <a href="#about-album" class="more-info">Dowiedz się więcej</a>
+        </div>
+    </section>
+
+    <!-- Mock2 -->
+    <section class="mock mock2">
+        <div class="section">
+            <h2>Pre-save streamingi</h2>
+            <div class="streaming-buttons">
+                <a href="https://music.apple.com/pl/artist/eder/1374134217" class="streaming-link" target="_blank">Apple Music</a>
+                <a href="https://open.spotify.com/artist/5x5ppvL5yzpn2wiXnrMaiR?si=ujppnZrvTFyrFX2Ca40GtA" class="streaming-link" target="_blank">Spotify</a>
+                <a href="https://tidal.com/browse/artist/44066969" class="streaming-link" target="_blank">Tidal</a>
+            </div>
+        </div>
+
+        
+        <div class="section">
+            <h2>Posłuchaj przedpremierowo</h2>
+            <ul class="track-list">
+                <!-- Dynamicznie generowane elementy -->
+            </ul>
+    
+            <div id="track-details" class="hidden">
+                <h3 id="track-title"></h3>
+                <p class="pre-release-warning">To jest wersja przedpremierowa i może brzmieć inaczej.</p>
+                <p><strong>Data eksportu:</strong> <span id="export-date"></span></p>
+                <p><strong>Credits:</strong> <span id="credits"></span></p>
+                <audio id="track-player" controls>
+                    <source src="" type="audio/mp3">
+                    Twoja przeglądarka nie obsługuje elementu audio.
+                </audio>
+                <button id="close-details">Zamknij</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mock3 -->
+    <section  id="about-album" class="mock mock3">
+        <div class="section">
+            <h2>Koncerty</h2>
+            <p>TBA</p>
+        </div>
+        <div class="section">
+            <h2>O albumie</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec fermentum nulla, vel hendrerit eros. Suspendisse potenti...</p>
+        </div>
+    </section>
+
+    <!-- Mock4 -->
+    <section class="mock mock4">
+        <div class="section">
+            <img src="{{ url_for('static', filename='resources/band-photo.jpg') }}" alt="Band Photo" class="band-photo">
+        </div>
+        <div class="section">
+            <h2>Sociale</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ZespolEDER/?locale=pl_PL" class="social-link" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/eder.insta/?hl=pl" class="social-link" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/channel/UC5TNJfG5gE248MzoQCm18_w" class="social-link" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

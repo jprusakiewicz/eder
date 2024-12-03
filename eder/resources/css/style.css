@@ -1,0 +1,263 @@
+:root {
+   /* CSS HEX */
+--primary: #F33D9Aff; /* Rose Bonbon */
+--secondary: #1F1721ff; /* Raisin Black */
+--accent: #2D9DA1ff; /* Dark Cyan */
+--tertiary: #544965ff; /* English Violet */
+
+/* CSS HSL */
+--primary: hsla(329, 88%, 60%, 1);
+--secondary: hsla(288, 18%, 11%, 1);
+--accent: hsla(182, 56%, 40%, 1);
+--tertiary: hsla(264, 16%, 34%, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* background-color: #111; */
+    background: linear-gradient(
+    135deg,
+    var(--primary) 1%,  /* Primary color takes up 10% */
+    var(--secondary) 30%, /* Transition to secondary starts early */
+    var(--accent) 60%,    /* Accent dominates the middle */
+    var(--tertiary) 100%  /* Tertiary fills the rest */
+);
+    color: #fff;
+    line-height: 1.5;
+}
+
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    background-color: rgba(0, 0, 0, 0.83); /* Black with 50% opacity */
+}
+
+.mock1 {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.mock1 .left, .mock1 .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.mock1 .album-cover {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.mock1 .right {
+    flex-direction: column;
+    text-align: center;
+}
+
+.mock1 .album-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.mock1 .album-description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.mock1 .buy-button {
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.mock1 .buy-button:hover {
+    background-color: var(--tertiary);
+}
+
+.mock1 .more-info {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.mock1 .more-info:hover {
+    color: var(--tertiary);
+}
+
+.mock2 .section {
+    margin-bottom: 65px; /* Dodano większy odstęp między sekcjami */
+}
+
+.mock2 h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px; /* Odstęp między tytułem sekcji a jej zawartością */
+}
+
+.mock2 .streaming-buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.track-list {
+    list-style: none;
+    padding: 0;
+}
+
+.track-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #444;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.track-item:hover {
+    background-color: #2D9DA1;
+}
+
+#track-details {
+    background-color: #15232C;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #512144;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #50A3A8;
+}
+
+.mock3 h2, .mock3 p {
+    margin: 20px 0;
+}
+
+.mock4 .band-photo {
+    max-width: 70%;
+    border-radius: 10px;
+}
+
+.mock4 .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Odstęp między przyciskami na większych ekranach */
+    flex-wrap: wrap; /* Pozwala przenosić przyciski do kolejnych linii */
+    margin-top: 20px;
+}
+
+.mock4 .social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.mock4 .social-link:hover {
+    background-color: #666;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .mock1 {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .mock1 .left, .mock1 .right {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .mock1 .album-title {
+        font-size: 2em;
+    }
+
+    .mock1 .album-description {
+        font-size: 1em;
+    }
+
+    .mock1 .buy-button {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    .mock1 .more-info {
+        font-size: 0.9em;
+    }
+
+    .mock4 .band-photo {
+        max-width: 90%; /* Zwiększenie proporcjonalności na mniejszych ekranach */
+    }
+
+    .mock4 .social-links {
+        flex-direction: column; /* Ustaw przyciski w pionie */
+        gap: 10px; /* Mniejszy odstęp między przyciskami */
+    }
+
+    .mock4 .social-link {
+        padding: 8px 15px; /* Zmniejsz rozmiar przycisków na mniejszych ekranach */
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .mock1 .album-title {
+        font-size: 1.8em;
+    }
+
+    .mock1 .album-description {
+        font-size: 0.9em;
+    }
+
+    .mock1 .buy-button {
+        font-size: 0.8em;
+    }
+
+    .mock4 .band-photo {
+        max-width: 100%; /* Zdjęcie zajmuje całą szerokość ekranu */
+        height: auto; /* Zachowanie proporcji */
+    }
+}

@@ -1,0 +1,1 @@
+gunicorn main:app --env SCRIPT_NAME=/eder

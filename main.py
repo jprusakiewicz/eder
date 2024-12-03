@@ -15,7 +15,7 @@ def list_files(directory):
 
 @app.route('/')
 def index():
-    files = list_files(app.static_folder)  # Przeglądaj pliki w folderze `eder`
+    files = list_files(os.path.join(app.static_folder, "songs"))  # Przeglądaj pliki w folderze `eder`
     return render_template('index.html', files=files)
 
 def get_song_details(song_dir):
@@ -64,7 +64,7 @@ def tracks():
     Endpoint that returns details of a song.
     """
     # Look for directories in `eder`
-    base_dir = app.static_folder
+    base_dir = os.path.join(app.static_folder, "songs")
     directories = [os.path.join(base_dir, d) for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
 
     # Process each directory to find song details

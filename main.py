@@ -83,5 +83,10 @@ def tracks():
 
     return jsonify(tracks)
 
+
+@app.route('/sklep')
+def sklep():
+    return render_template('sklep.html')
+
 if __name__ == "__main__":
     app.run()

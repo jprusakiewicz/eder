@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zespół Eder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='resources/css/sklep.css') }}">
+    <script src="https://js.stripe.com/v3/buy-button.js" defer> </script>
+</head>
+<body>
+    <sklep>
+        <stripe-buy-button
+        buy-button-id="buy_btn_1QSN9YDcjgRiJPSK2yUrNfQi"
+        publishable-key="pk_test_51QSJQXDcjgRiJPSKVZgUAyomLwfbzrAosMuvhSAsLpdQL2aob2uHDqpp0W1Ksw6rqz3gCN1PUVrrDIhDFAdld15p008W4rxFcO"
+>
+</stripe-buy-button>
+        <stripe-buy-button
+                    buy-button-id="buy_btn_1QSNAsDcjgRiJPSKEgyUYyKS"
+                    publishable-key="pk_test_51QSJQXDcjgRiJPSKVZgUAyomLwfbzrAosMuvhSAsLpdQL2aob2uHDqpp0W1Ksw6rqz3gCN1PUVrrDIhDFAdld15p008W4rxFcO"
+        >
+        </stripe-buy-button>
+        <stripe-buy-button
+                buy-button-id="buy_btn_1QSNARDcjgRiJPSKYVfOHZw8"
+                publishable-key="pk_test_51QSJQXDcjgRiJPSKVZgUAyomLwfbzrAosMuvhSAsLpdQL2aob2uHDqpp0W1Ksw6rqz3gCN1PUVrrDIhDFAdld15p008W4rxFcO"
+        >
+        </stripe-buy-button>
+        <stripe-buy-button
+                buy-button-id="buy_btn_1QSNBWDcjgRiJPSKQvo0one9"
+                publishable-key="pk_test_51QSJQXDcjgRiJPSKVZgUAyomLwfbzrAosMuvhSAsLpdQL2aob2uHDqpp0W1Ksw6rqz3gCN1PUVrrDIhDFAdld15p008W4rxFcO"
+        >
+        </stripe-buy-button>
+    </sklep>
+</body>
+</html>

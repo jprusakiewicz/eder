@@ -11,14 +11,13 @@
     <!-- Mock1 -->
     <section class="mock mock1">
         <div class="left">
-            <img src="{{ url_for('static', filename='resources/album-cover.jpg') }}" alt="Album Cover" class="album-cover">
+            <img src="{{ url_for('static', filename='resources/artwork.png') }}" alt="Album Cover" class="album-cover">
         </div>
         <div class="right">
-            <h1 class="album-title">Nazwa Płyty</h1>
+            <h1 class="album-title">Bez Oklasków</h1>
             <p class="album-description">
-                To jest krótki opis płyty. Dowiedz się, co zainspirowało artystów i co czeka Cię podczas odsłuchu.
-            </p>
-            <button class="buy-button">Kup płytę</button>
+                Zbiór prostych, szczerych pop-rockowych piosenek. Bezpretensjonalna i pełna lekkości, jest idealna do słuchania w każdej chwili.            </p>
+            <button class="buy-button" onclick="window.location.href='/eder/sklep';">Kup płytę</button>
             <a href="#about-album" class="more-info">Dowiedz się więcej</a>
         </div>
     </section>
@@ -63,7 +62,13 @@
         </div>
         <div class="section">
             <h2>O albumie</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec fermentum nulla, vel hendrerit eros. Suspendisse potenti...</p>
+            <p class="oalbumie">
+                Druga płyta zespołu Eder, "Bez oklasków", to dowód na to, że magia muzyki tkwi w prostocie i autentyczności. Stworzona w całości w zaciszu sali prób, jest owocem spontanicznego procesu twórczego, który zaowocował materiałem gotowym zaledwie rok po debiucie.
+
+Album składa się z prostych, rockowych kompozycji, w których królują tematy miłości, ale znajdzie się tu również miejsce na inne emocjonalne odcienie. "Bez oklasków" to płyta, która nie aspiruje do wielkości – zamiast tego oferuje szczerość i lekkość, idealną na każdą chwilę. Jej bezpretensjonalność sprawia, że słucha się jej jak spotkania z bliskim przyjacielem – bez zbędnej napinki, za to z sercem.
+
+To muzyka, która powstała z pasji i chęci tworzenia, bez kalkulacji czy presji. "Bez oklasków" to hołd dla prostoty i esencji rockowego ducha.
+            </p>
         </div>
     </section>
 

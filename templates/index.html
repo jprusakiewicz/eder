@@ -36,20 +36,20 @@
         
         <div class="section">
             <h2>Posłuchaj przedpremierowo</h2>
-            <ul class="track-list">
+            <ul class="track-list"  onclick="startAudio()">
                 <!-- Dynamicznie generowane elementy -->
             </ul>
     
             <div id="track-details" class="hidden">
                 <h3 id="track-title"></h3>
-                <p class="pre-release-warning">To jest wersja przedpremierowa i może brzmieć inaczej.</p>
+                <p class="pre-release-warning">To jest wersja DEMO (przedpremierowa) i może brzmieć inaczej.</p>
                 <p><strong>Data eksportu:</strong> <span id="export-date"></span></p>
                 <p><strong>Credits:</strong> <span id="credits"></span></p>
                 <audio id="track-player" controls>
                     <source src="" type="audio/mp3">
                     Twoja przeglądarka nie obsługuje elementu audio.
                 </audio>
-                <button id="close-details">Zamknij</button>
+                <button id="close-details" onclick="stopAudio()">Zamknij</button>
             </div>
         </div>
     </section>
@@ -86,5 +86,18 @@ To muzyka, która powstała z pasji i chęci tworzenia, bez kalkulacji czy presj
             </div>
         </div>
     </section>
+
+<script>
+    function stopAudio() {
+        const audioPlayer = document.getElementById("track-player");
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+    }
+
+    function startAudio() {
+        const audioPlayer = document.getElementById("track-player");
+        audioPlayer.play();
+    }
+</script>
 </body>
 </html>

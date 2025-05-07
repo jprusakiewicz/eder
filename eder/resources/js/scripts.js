@@ -47,6 +47,7 @@ function initializeTrackList(tracks) {
             const trackId = item.getAttribute("data-track");
             const track = tracks[trackId - 1];
             if (track) {
+                currentTrackId = track.id
                 titleElement.textContent = track.title;
                 exportDateElement.textContent = track.exportDate;
                 creditsElement.textContent = track.credits;
@@ -57,6 +58,51 @@ function initializeTrackList(tracks) {
         });
     });
 
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: 'W inną stronę',
+          artist: 'Eder',
+          album: 'Bez Oklasków',
+          artwork: [
+            { src: 'eder/resources/artwork-96x96.png',   sizes: '96x96',   type: 'image/png' },
+            { src: 'eder/resources/artwork-128x128.png', sizes: '128x128', type: 'image/png' },
+            { src: 'eder/resources/artwork-192x192.png', sizes: '192x192', type: 'image/png' },
+            { src: 'eder/resources/artwork-256x256.png', sizes: '256x256', type: 'image/png' },
+            { src: 'eder/resources/artwork-384x384.png', sizes: '384x384', type: 'image/png' },
+            { src: 'eder/resources/artwork-512x512.png', sizes: '512x512', type: 'image/png' },
+          ]
+        });
+
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+            if (currentTrackId < tracks.length) {
+                nextTrackId = currentTrackId++;
+                nextTrack = tracks[nextTrackId];
+                navigator.mediaSession.metadata.title = nextTrack.title;
+                titleElement.textContent = nextTrack.title;
+                exportDateElement.textContent = nextTrack.exportDate;
+                creditsElement.textContent = nextTrack.credits;
+                audioPlayer.querySelector("source").src = nextTrack.audioSrc;
+                audioPlayer.load();
+                audioPlayer.play();
+                audioPlayer.setAttribute("data-current-track", nextTrackId);
+            }
+        });
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+            if (currentTrackId > 0) {
+                const previousTrack = tracks[currentTrackId - 1];
+                navigator.mediaSession.metadata.title = previousTrack.title;
+                currentTrackId--;
+                titleElement.textContent = previousTrack.title;
+                exportDateElement.textContent = previousTrack.exportDate;
+                creditsElement.textContent = previousTrack.credits;
+                audioPlayer.querySelector("source").src = previousTrack.audioSrc;
+                audioPlayer.load();
+                audioPlayer.play();
+                audioPlayer.setAttribute("data-current-track", nextTrackId);
+            }
+        });
+      }
+
     closeDetailsButton.addEventListener("click", () => {
         detailsSection.classList.add("hidden");
     });
@@ -65,8 +111,9 @@ function initializeTrackList(tracks) {
         // play next song
         nextTrackId = currentTrackId + 1;
         if (nextTrackId < tracks.length) {
-            const nextTrack = tracks[nextTrackId];
+            nextTrack = tracks[nextTrackId];
             currentTrackId = nextTrackId;
+            navigator.mediaSession.metadata.title = nextTrack.title;
             titleElement.textContent = nextTrack.title;
             exportDateElement.textContent = nextTrack.exportDate;
             creditsElement.textContent = nextTrack.credits;

@@ -1,39 +1,11 @@
-// const tracks = null;
-// [
-//     {
-//         title: "Utwór 1",
-//         exportDate: "2024-12-01",
-//         credits: "Artysta A, Producent B",
-//         audioSrc: "https://eder.pl/eder/utwor2.mp3"
-//     },
-//     {
-//         title: "Utwór 2",
-//         exportDate: "2024-11-30",
-//         credits: "Artysta C, Producent D",
-//         audioSrc: "utwor2.mp3"
-//     },
-//     {
-//         title: "Utwór 3",
-//         exportDate: "2024-11-29",
-//         credits: "Artysta E, Producent F",
-//         audioSrc: "utwor3.mp3"
-//     },
-//     {
-//         title: "Utwór 4",
-//         exportDate: "2024-11-28",
-//         credits: "Artysta G, Producent H",
-//         audioSrc: "utwor4.mp3"
-//     },
-//     {
-//         title: "Utwór 5",
-//         exportDate: "2024-11-27",
-//         credits: "Artysta I, Producent J",
-//         audioSrc: "utwor5.mp3"
-//     }
-// ];
+const tracksUrl = "/eder/tracks";
+let currentTrackId = 0; 
 
-const tracksUrl = "/eder/tracks"; // Relatywny URL
-
+function addIdsToTracks(tracks) {
+    tracks.forEach((track, index) => {
+        track.id = index + 1;
+    });
+}
 async function fetchTracks() {
     try {
         const response = await fetch(tracksUrl);
@@ -41,7 +13,7 @@ async function fetchTracks() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         var tracks = await response.json();
-        console.log("Fetched tracks:", tracks);
+        addIdsToTracks(tracks);
         generateTrackList(tracks);
         initializeTrackList(tracks);
     } catch (error) {
@@ -91,10 +63,10 @@ function initializeTrackList(tracks) {
 
     audioPlayer.addEventListener("ended", () => {
         // play next song
-        const currentTrackId = parseInt(audioPlayer.getAttribute("data-current-track"), 10);
-        const nextTrackId = currentTrackId + 1;
+        nextTrackId = currentTrackId + 1;
         if (nextTrackId < tracks.length) {
             const nextTrack = tracks[nextTrackId];
+            currentTrackId = nextTrackId;
             titleElement.textContent = nextTrack.title;
             exportDateElement.textContent = nextTrack.exportDate;
             creditsElement.textContent = nextTrack.credits;
@@ -102,17 +74,8 @@ function initializeTrackList(tracks) {
             audioPlayer.load();
             audioPlayer.play();
             audioPlayer.setAttribute("data-current-track", nextTrackId);
-        } else {
-            detailsSection.classList.add("hidden");
         }
-        // Reset the current track ID if it exceeds the number of tracks
-        if (nextTrackId >= tracks.length) {
-            audioPlayer.setAttribute("data-current-track", 0);
-            detailsSection.classList.add("hidden");
-        }
-
     });
 }
 
-// Call the fetch function to load tracks dynamically
 fetchTracks();

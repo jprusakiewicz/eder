@@ -88,6 +88,30 @@ function initializeTrackList(tracks) {
     closeDetailsButton.addEventListener("click", () => {
         detailsSection.classList.add("hidden");
     });
+
+    audioPlayer.addEventListener("ended", () => {
+        // play next song
+        const currentTrackId = parseInt(audioPlayer.getAttribute("data-current-track"), 10);
+        const nextTrackId = currentTrackId + 1;
+        if (nextTrackId < tracks.length) {
+            const nextTrack = tracks[nextTrackId];
+            titleElement.textContent = nextTrack.title;
+            exportDateElement.textContent = nextTrack.exportDate;
+            creditsElement.textContent = nextTrack.credits;
+            audioPlayer.querySelector("source").src = nextTrack.audioSrc;
+            audioPlayer.load();
+            audioPlayer.play();
+            audioPlayer.setAttribute("data-current-track", nextTrackId);
+        } else {
+            detailsSection.classList.add("hidden");
+        }
+        // Reset the current track ID if it exceeds the number of tracks
+        if (nextTrackId >= tracks.length) {
+            audioPlayer.setAttribute("data-current-track", 0);
+            detailsSection.classList.add("hidden");
+        }
+
+    });
 }
 
 // Call the fetch function to load tracks dynamically

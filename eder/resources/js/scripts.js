@@ -13,6 +13,8 @@ async function fetchTracks() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
         var tracks = await response.json();
+        tracks = sortTracks(tracks);
+        tracks = tracks.filter(track => track.audioSrc !== null);
         addIdsToTracks(tracks);
         generateTrackList(tracks);
         initializeTrackList(tracks);
@@ -20,6 +22,15 @@ async function fetchTracks() {
         console.error("Failed to fetch tracks:", error);
     }
 }
+
+function sortTracks(tracks) {
+    // tracks schema: { "title": "Track Title", "sorting": 1, "credits": "Artist Name", "audioSrc": "/path/to/audio.mp3" }
+    return tracks.sort((a, b) => {
+        if (a.sorting < b.sorting) return -1;
+        if (a.sorting > b.sorting) return 1;
+        return 0;
+    });
+ }
 
 function generateTrackList(tracks) {
     const trackList = document.querySelector(".track-list");

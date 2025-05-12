@@ -51,6 +51,7 @@ function initializeTrackList(tracks) {
                 titleElement.textContent = track.title;
                 exportDateElement.textContent = track.exportDate;
                 creditsElement.textContent = track.credits;
+                navigator.mediaSession.metadata.title = track.title;
                 audioPlayer.querySelector("source").src = track.audioSrc;
                 audioPlayer.load();
                 detailsSection.classList.remove("hidden");

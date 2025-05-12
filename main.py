@@ -40,17 +40,20 @@ def get_song_details(song_dir):
             # Ensure title and release date exist in JSON
             title = description.get("title", "Unknown Title")
             release_date = description.get("releaseDate", "Unknown Date")
+            sorting = description.get("sorting", 100)
 
         # Build the track details
         else:
             title = "Unknown Title"
             release_date = "Unknown Date"
+            sorting = 100
 
         relative_path = os.path.relpath(song_dir, app.static_folder)
 
         return {
             "title": title,
             "exportDate": release_date,
+            "sorting": sorting,
             "credits": description.get("credits", "No credits available"),
             "audioSrc": url_for('static', filename=os.path.join(relative_path, mp3_file))
         }
